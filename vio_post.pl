@@ -38,7 +38,7 @@ sub bid_action
     unless($cleos_get[3] =~ /$eos_account_name/)
     {
    `cat $passwd |cleos wallet unlock -n $wallet_name`;
-   `cleos $api_url  push action labelaarbaro bid '["worldpeace55","$post_id"]' -p worldpeace55`;
+   `cleos $api_url  push action labelaarbaro bid '["$eos_account_name","$post_id"]' -p $eos_account_name`;
     }
    }
    return 1;
