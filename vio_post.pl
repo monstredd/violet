@@ -5,7 +5,7 @@ my $go_back_bid_num = 5;                #Back bid numbers
 my $eos_account_name = "worldpeace55";  #your eos account name
 my $passwd = "buyer_p";                 #eos wallet password file
 my $wallet_name = "buyer";              #eos wallet name
-
+my $regular = "13.0000|16.9000|21.9700|28.5610|37.1293|48.268";  #regular of bid price 
 
 my $api_url;
 
@@ -30,15 +30,15 @@ sub bid_action
    {
     print "bid 1\n";
    `cat $passwd |cleos wallet unlock -n $wallet_name`;
-    `cleos $api_url  push action labelaarbaro bid '["$eos_account_name","$post_id"]' -p $eos_account_name`;
+   `cleos $api_url  push action labelaarbaro bid '["$eos_account_name","$post_id"]' -p $eos_account_name`;
    }
-   elsif($cleos_get[5] =~ /\"next_bid\"\: \"13.0000|16.9000|21.9700 VIO\"/) #next bid  28.5610 37.1293...   #add bid regular matching mode
+   elsif($cleos_get[5] =~ /\"next_bid\"\: \"$regular VIO\"/)   #add bid regular matching mode
    {
    print "bid 2 \n";
     unless($cleos_get[3] =~ /$eos_account_name/)
     {
    `cat $passwd |cleos wallet unlock -n $wallet_name`;
-   `cleos $api_url  push action labelaarbaro bid '["$eos_account_name","$post_id"]' -p $eos_account_name`;
+    `cleos $api_url  push action labelaarbaro bid '["$eos_account_name","$post_id"]' -p $eos_account_name`;
     }
    }
    return 1;
