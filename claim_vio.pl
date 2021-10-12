@@ -20,7 +20,7 @@ sleep (5);
 
 for (0..1)
 {
-my $cleos =`cleos -u $api push action labelaarbaro  checkin '["worldpeace55"]' -p $eden_account`;
+my $cleos =`cleos -u $api push action labelaarbaro  checkin '["$eden_account"]' -p $eden_account`;
 sleep(5);
 }
 
