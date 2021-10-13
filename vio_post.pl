@@ -51,8 +51,8 @@ if (@ARGV)
  {
   print "$ARGV[0] \n";
   my $get_return  = bid_action ($ARGV[0]);
-  
-  unless (my $pid = fork) {
+  my $pid;
+  unless ($pid = fork) {
     print "child process\n";
     my $bid_num = $ARGV[0] - $go_back_bid_num;
     foreach ($bid_num..$ARGV[0])
@@ -61,7 +61,7 @@ if (@ARGV)
     }
     exit 0;
    }
-  
+  my $ret = waitpid($pid, 0); 
    if ($get_return == 1)
   {
    $ARGV[0] ++;
