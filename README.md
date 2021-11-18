@@ -4,7 +4,7 @@ vio token auto claim;
 
 cleos must be installed first;
 
-your account private key must be your cleos wallet.
+your account private key must be in your cleos wallet.
 
 mac and ubuntu tested;
 
